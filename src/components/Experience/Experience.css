@@ -1,0 +1,107 @@
+.experience-list {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Vertical Timeline Line */
+.experience-list::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 1px; height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(201, 168, 76, 0.4) 10%, rgba(201, 168, 76, 0.4) 90%, transparent);
+}
+
+.experience-item {
+  display: flex;
+  gap: 3rem;
+  padding: 4rem 0 4rem 3rem;
+  position: relative;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+/* Timeline Dot */
+.experience-item::before {
+  content: "";
+  position: absolute;
+  left: -5px; top: 70px; width: 10px; height: 10px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--accent-gold);
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover::before {
+  transform: scale(1.5);
+  box-shadow: 0 0 25px var(--accent-gold);
+}
+
+.experience-item:hover {
+  transform: translateX(15px);
+}
+
+.exp-meta {
+  flex: 0 0 220px;
+  text-align: left;
+}
+
+.exp-meta h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.5px;
+}
+
+.exp-company {
+  display: block;
+  font-size: 1rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.exp-period {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.exp-content {
+  flex: 1;
+  padding-left: 3rem;
+}
+
+.exp-content p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.exp-content ul {
+  list-style: none;
+}
+
+.exp-content ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.exp-content ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .experience-item { flex-direction: column; gap: 2rem; }
+  .exp-meta { flex: none; }
+  .exp-content { padding-left: 0; }
+}

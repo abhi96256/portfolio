@@ -1,0 +1,99 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.8rem 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.navbar-scrolled {
+  padding: 1.2rem 0;
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  color: #fff;
+  z-index: 10;
+}
+
+.logo-text span {
+  color: var(--accent-gold);
+}
+
+/* Centering links precisely in the navigation bar using absolute positioning */
+.nav-links {
+  display: flex;
+  gap: 2.8rem;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.nav-links li a {
+  color: #999;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #fff;
+}
+
+.nav-actions {
+  z-index: 10;
+}
+
+.talk-btn {
+  background: var(--accent-gold);
+  color: #000 !important;
+  padding: 0.7rem 1.6rem !important;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.talk-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 25px var(--accent-gold-glow);
+  transform: scale(1.05);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 7px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: #fff;
+}
+
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
