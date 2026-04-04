@@ -3,8 +3,8 @@ import './About.css';
 
 const About = () => {
   const stats = [
-    { value: "4+", label: "Years Experience" },
-    { value: "20+", label: "Projects Completed" },
+    { value: "2+", label: "Years Experience" },
+    { value: "10+", label: "Projects Completed" },
     { value: "5+", label: "Satisfied Clients" }
   ];
 
@@ -16,16 +16,16 @@ const About = () => {
       <div className="about-layout">
         <div className="about-text">
           <p>
-            I'm a passionate developer with a keen eye for detail and a love for creating 
-            seamless digital experiences. My journey in tech started with a curiosity 
-            for how things work, and it's evolved into a career dedicated to 
+            I'm a passionate developer with a keen eye for detail and a love for creating
+            seamless digital experiences. My journey in tech started with a curiosity
+            for how things work, and it's evolved into a career dedicated to
             building high-performance web applications.
           </p>
           <p>
-            I specialize in modern frontend technologies, always striving to stay 
+            I specialize in modern frontend technologies, always striving to stay
             at the forefront of industry trends and best practices.
           </p>
-          <a href="#" className="gold-btn">Download Resume</a>
+          <a href="/Abhishek_Kumar_Resume.pdf" download="Abhishek_Kumar_Resume.pdf" className="gold-btn">Download Resume</a>
         </div>
         <div className="about-stats">
           {stats.map(s => (

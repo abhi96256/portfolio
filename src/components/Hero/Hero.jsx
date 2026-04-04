@@ -84,15 +84,15 @@ const Hero = () => {
         {/* Top Status */}
         <div className="status-container">
           <div className="status-badge">
-            <span className="sparkle">✨</span>
-            Open to opportunities
+            <span className="live-dot"></span>
+            AVAILABLE FOR NEW OPPORTUNITIES
           </div>
         </div>
 
         {/* Center Content */}
         <div className="hero-main-content">
           <p className="hero-greeting">Hello, I'm</p>
-          <h1 className="hero-name">Alex Chen</h1>
+          <h1 className="hero-name">Abhishek</h1>
 
           <div className="tagline-box">
             <span className="tagline-prefix">{">"}</span>

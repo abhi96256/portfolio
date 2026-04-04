@@ -4,27 +4,24 @@ import './Experience.css';
 const EXPERIENCE_DATA = [
   {
     id: 1,
-    role: "Senior Frontend Lead",
-    company: "TechNova Inc.",
-    period: "2021 — Present",
-    desc: "Led the development of a flagship SaaS platform, improving performance by 40%.",
-    bullets: ["Architected scalable React apps", "Mentored 10+ junior developers", "Optimized CI/CD pipelines"]
+    role: "Software Engineer",
+    company: "Maydiv Infotech, Faridabad",
+    period: "April 2025 – Present",
+    desc: "Built dynamic and scalable web applications including CRM systems, e-commerce platforms, ERP solutions, and portfolio websites.",
+    bullets: [
+      "Developed full-stack solutions using React.js, Next.js, Node.js, Express.js, MongoDB, and REST APIs.",
+      "Wrote clean, efficient, and reusable code following industry best practices."
+    ]
   },
   {
     id: 2,
-    role: "Full Stack Developer",
-    company: "PixelForge Studio",
-    period: "2019 — 2021",
-    desc: "Built modern e-commerce sites using Next.js and Node.js.",
-    bullets: ["Integrated Stripe payments", "Implemented Redux for state", "Refactored legacy code"]
-  },
-  {
-    id: 3,
-    role: "Junior Web Developer",
-    company: "Spark Digital",
-    period: "2018 — 2019",
-    desc: "Developed responsive landing pages for international clients.",
-    bullets: ["Converted designs to HTML/CSS", "Maintained client portals", "Assisted in SEO optimization"]
+    role: "Software Developer",
+    company: "3S Logics Pvt. Ltd., Gurugram",
+    period: "October 2024 – April 2025",
+    desc: "Designed and developed responsive, user-friendly, and scalable web applications with a focus on performance and usability.",
+    bullets: [
+      "Built modern front-end interfaces using React.js and Next.js with Tailwind CSS for utility-first UI design."
+    ]
   }
 ];
 

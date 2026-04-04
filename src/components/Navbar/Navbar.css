@@ -107,7 +107,7 @@
 }
 
 .hamburger span {
-  width: 28px;
+  width: 32px;
   height: 2px;
   background: #fff;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -139,8 +139,9 @@
     flex-direction: column;
     align-items: flex-start; /* Aligned to left */
     justify-content: center;
-    width: 80%; /* Slightly wider */
-    padding-left: 3rem; /* Left alignment padding */
+    width: 100%; 
+    padding-left: 2.5rem; /* Aligned to left with some padding */
+    align-items: flex-start;
     transform: translateX(100%);
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     z-index: 90;
@@ -157,8 +158,8 @@
   }
 
   .nav-links li a {
-    font-size: 1.8rem; /* Larger, clearer text */
-    font-weight: 800;
+    font-size: 1.3rem; /* Reduced font size for options */
+    font-weight: 700;
   }
 
   .nav-links.nav-active li {

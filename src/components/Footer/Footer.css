@@ -77,9 +77,23 @@
   border-radius: 8px;
   font-size: 0.85rem;
   color: #888;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   transition: all 0.3s ease;
   font-weight: 600;
+}
+
+.social-badge img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.social-badge:hover img {
+  opacity: 1;
 }
 
 .scroll-top-wrapper {

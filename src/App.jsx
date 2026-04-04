@@ -40,6 +40,16 @@ function App() {
         <div id="contact" className="reveal"><Contact /></div>
       </main>
       <Footer />
+      
+      <a 
+        href="https://wa.me/919625613008" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="whatsapp-float"
+        title="Chat on WhatsApp"
+      >
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp" />
+      </a>
     </div>
   );
 }

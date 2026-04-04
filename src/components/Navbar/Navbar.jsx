@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container nav-content">
-        <a href="#home" className="logo-text">Alex.<span>Chen</span></a>
+        <a href="#home" className="logo-text">Abhi.<span>shek</span></a>
         
         <ul className={`nav-links ${menuOpen ? 'nav-active' : ''}`}>
           <li><a href="#home" onClick={() => setMenuOpen(false)} className={activeSection === 'home' ? 'active' : ''}>Home</a></li>

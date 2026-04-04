@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-top">
           {/* Logo & Tagline */}
           <div className="footer-brand">
-            <h2 className="footer-logo">Alex.<span>Chen</span></h2>
+            <h2 className="footer-logo">Abhi.<span>shek</span></h2>
             <p className="footer-tagline">
               I craft digital experiences that blend aesthetics with performance.
             </p>
@@ -36,16 +36,21 @@ const Footer = () => {
           <div className="footer-social-group">
             <h4 className="footer-title">CONNECT</h4>
             <div className="social-badge-grid">
-              <a href="#" className="social-badge">GitHub</a>
-              <a href="#" className="social-badge">LinkedIn</a>
-              <a href="#" className="social-badge">Twitter</a>
-              <a href="#" className="social-badge">Email</a>
+              <a href="https://github.com/abhi96256" target="_blank" rel="noopener noreferrer" className="social-badge">
+                <img src="https://cdn.simpleicons.org/github/white" alt="GitHub" /> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/abhishek-kumar-326939291/" target="_blank" rel="noopener noreferrer" className="social-badge">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn" /> LinkedIn
+              </a>
+              <a href="mailto:akay13230@gmail.com" className="social-badge">
+                <img src="https://cdn.simpleicons.org/gmail/white" alt="Email" /> Email
+              </a>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p className="built-by">Built with ♡ by Alex Chen</p>
+          <p className="built-by">Built with ♡ by Abhishek</p>
           <div className="scroll-top-wrapper">
              <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="scroll-top-btn">
                 ↑
