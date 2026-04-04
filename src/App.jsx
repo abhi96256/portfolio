@@ -3,13 +3,16 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Experience from './components/Experience/Experience';
+import Process from './components/Process/Process';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import EyeScroll from './components/EyeScroll/EyeScroll';
 import './App.css';
 
 function App() {
+
   useEffect(() => {
     // Simple intersection observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
@@ -26,13 +29,15 @@ function App() {
   return (
     <div className="portfolio-app">
       <Navbar />
+      <EyeScroll />
       <main>
         <section id="home" className="reveal"><Hero /></section>
-        <section className="reveal"><About /></section>
-        <section className="reveal"><Experience /></section>
-        <section className="reveal"><Projects /></section>
-        <section className="reveal"><Skills /></section>
-        <section className="reveal"><Contact /></section>
+        <div id="about" className="reveal"><About /></div>
+        <div id="experience" className="reveal"><Experience /></div>
+        <div id="process" className="reveal"><Process /></div>
+        <div id="projects" className="reveal"><Projects /></div>
+        <div id="skills" className="reveal"><Skills /></div>
+        <div id="contact" className="reveal"><Contact /></div>
       </main>
       <Footer />
     </div>

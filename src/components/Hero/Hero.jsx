@@ -4,6 +4,9 @@ import './Hero.css';
 const Hero = () => {
   const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Design Systems Expert'];
   const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(150);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -17,27 +20,67 @@ const Hero = () => {
       }
     };
 
+    const handleScroll = () => {
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        const scrollY = window.scrollY;
+        hero.style.setProperty('--scroll-y', `${scrollY}px`);
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  useEffect(() => {
+    const currentRole = roles[roleIndex];
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing
+        setDisplayText(currentRole.substring(0, displayText.length + 1));
+        setTypingSpeed(150);
+
+        if (displayText === currentRole) {
+          // Finished typing, wait before deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting
+        setDisplayText(currentRole.substring(0, displayText.length - 1));
+        setTypingSpeed(50);
+
+        if (displayText === '') {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, roleIndex, roles]);
+
   return (
     <header className="hero section-padding">
-      {/* Dynamic Background Effects */}
+      {/* Multi-Layered Parallax Background */}
+      <ul className="parallax-bg-layers">
+        <li className="layer l1"></li>
+        <li className="layer l2"></li>
+        <li className="layer l3"></li>
+        <li className="layer l4"></li>
+        <li className="layer l5"></li>
+        <li className="layer l6"></li>
+      </ul>
       <div className="hero-mesh-overlay"></div>
-      <div className="glow-blob blob-1"></div>
-      <div className="glow-blob blob-2"></div>
-      <div className="glow-blob blob-3"></div>
 
       <div className="container hero-container">
-        
+
         {/* Top Status */}
         <div className="status-container">
           <div className="status-badge">
@@ -50,11 +93,11 @@ const Hero = () => {
         <div className="hero-main-content">
           <p className="hero-greeting">Hello, I'm</p>
           <h1 className="hero-name">Alex Chen</h1>
-          
+
           <div className="tagline-box">
-             <span className="tagline-prefix">{">"}</span>
-             <span className="tagline-text">{roles[roleIndex]}</span>
-             <span className="tagline-cursor">|</span>
+            <span className="tagline-prefix">{">"}</span>
+            <span className="tagline-text">{displayText}</span>
+            <span className="tagline-cursor">|</span>
           </div>
 
           <p className="hero-sub-description">
@@ -97,13 +140,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Bottom Socials */}
-        <div className="bottom-socials">
-          <a href="#" className="social-icon">Gh</a>
-          <a href="#" className="social-icon">Li</a>
-          <a href="#" className="social-icon">Tw</a>
-          <a href="#" className="social-icon">Em</a>
-        </div>
 
         {/* Scroll Indicator */}
         <div className="scroll-indicator">

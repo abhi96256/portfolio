@@ -101,7 +101,25 @@
 }
 
 @media (max-width: 768px) {
-  .experience-item { flex-direction: column; gap: 2rem; }
-  .exp-meta { flex: none; }
-  .exp-content { padding-left: 0; }
+  .experience-item { 
+    flex-direction: column; 
+    gap: 1.5rem; 
+    padding: 3rem 0 3rem 2rem; 
+  }
+  .experience-item::before {
+    top: 55px;
+  }
+  .exp-meta { 
+    flex: none; 
+    text-align: left;
+  }
+  .exp-meta h3 {
+    font-size: 1.35rem;
+  }
+  .exp-content { 
+    padding-left: 0; 
+  }
+  .exp-content p {
+    font-size: 1rem;
+  }
 }

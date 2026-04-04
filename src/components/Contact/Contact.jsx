@@ -6,7 +6,7 @@ const Contact = () => {
     <section id="contact" className="contact section-padding container">
       <div className="contact-header">
         <h2 className="section-title">
-          <span className="section-num">05 —</span> Contact
+          <span className="section-num">06 —</span> Contact
         </h2>
         <h1 className="contact-main-title">Let's <span>connect</span></h1>
         <p className="contact-subtitle">
