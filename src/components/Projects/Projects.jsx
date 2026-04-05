@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './Projects.css';
 
 const PROJECTS_DATA = [
@@ -7,25 +7,27 @@ const PROJECTS_DATA = [
     title: "Fika-India Ecommerce",
     category: "Full Stack",
     image: "/6.7.png",
-    desc: "A premium e-commerce platform specializing in lifestyle and fashion, featuring a robust backend for seamless product management and user experience.",
-    tech: ["React", "Node.js", "MySQL"],
-    links: { demo: "https://fika-india.com/", source: "#" }
+    desc: "A premium e-commerce platform specializing in lifestyle and fashion.",
+    tech: ["React", "Node.js", "MySQL", "Redux"],
+    links: { demo: "https://fika-india.com/", source: "#" },
+    featured: true
   },
   {
     id: 2,
     title: "TractoWeave ERP",
     category: "Full Stack",
     image: "/trac.png",
-    desc: "A comprehensive Enterprise Resource Planning (ERP) solution designed for textile and weave management, streamlining industrial workflows with real-time data tracking.",
-    tech: ["Laravel", "PHP", "MySQL"],
-    links: { demo: "http://tractoweave.cloud/", source: "#" }
+    desc: "A comprehensive Enterprise Resource Planning (ERP) solution for textile management.",
+    tech: ["Laravel", "PHP", "MySQL", "AWS"],
+    links: { demo: "http://tractoweave.cloud/", source: "#" },
+    featured: true
   },
   {
     id: 3,
     title: "IT Agency Workflow",
     category: "Full Stack",
     image: "/it.png",
-    desc: "A specialized agency management software designed to streamline digital agency workflows and project management.",
+    desc: "A specialized agency management software designed to streamline digital agency workflows.",
     tech: ["React", "Node.js", "MySQL"],
     links: { demo: "https://it-agency-gold.vercel.app/", source: "#" }
   },
@@ -34,7 +36,7 @@ const PROJECTS_DATA = [
     title: "Job-Processing CRM",
     category: "Full Stack",
     image: "/Jms.png",
-    desc: "A comprehensive applicant tracking and job management CRM featuring a 5-stage workflow for seamless recruitment and application monitoring.",
+    desc: "Applicant tracking and job management CRM with 5-stage automated workflows.",
     tech: ["React", "Node.js", "MySQL"],
     links: { demo: "https://maytm.online/", source: "#" }
   },
@@ -43,8 +45,8 @@ const PROJECTS_DATA = [
     title: "Modern Portfolio",
     category: "Frontend",
     image: "/MAYDIV.png",
-    desc: "A sleek, high-performance personal portfolio built with Next.js, showcasing modern frontend architecture and smooth animations.",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    desc: "Sleek, high-performance personal portfolio built with Next.js and Framer Motion.",
+    tech: ["Next.js", "Tailwind CSS", "GSAP"],
     links: { demo: "https://www.maydiv.com/", source: "#" }
   },
   {
@@ -52,7 +54,7 @@ const PROJECTS_DATA = [
     title: "Tvara India",
     category: "Frontend",
     image: "/Tvara.png",
-    desc: "A modern web platform for Tvara India, featuring a sleek ReactJS interface for a premium branding experience.",
+    desc: "A modern web platform for Tvara India, featuring a sleek branding experience.",
     tech: ["ReactJS", "CSS3", "Framer Motion"],
     links: { demo: "https://www.tvaraindia.com/", source: "#" }
   },
@@ -61,7 +63,7 @@ const PROJECTS_DATA = [
     title: "Melanie India",
     category: "Frontend",
     image: "/3.7.png",
-    desc: "An elegant digital showcase for Melanie India, built with ReactJS for smooth performance and high responsiveness.",
+    desc: "Elegant digital showcase for Melanie India, built for high performance.",
     tech: ["ReactJS", "SASS", "JavaScript"],
     links: { demo: "https://www.melanieindia.com/", source: "#" }
   },
@@ -70,7 +72,7 @@ const PROJECTS_DATA = [
     title: "GridZero",
     category: "Frontend",
     image: "/Grid Zero-02.png",
-    desc: "A futuristic web experience for GridZero, utilizing ReactJS to deliver a clean and modern user interface.",
+    desc: "Futuristic web experience for GridZero with a clean modern user interface.",
     tech: ["ReactJS", "Tailwind CSS"],
     links: { demo: "https://gridzero.in/", source: "#" }
   },
@@ -79,7 +81,7 @@ const PROJECTS_DATA = [
     title: "Hotel Royal Grand Barsana",
     category: "Frontend",
     image: "/logo10.png",
-    desc: "A premium hospitality website for Hotel Royal Grand, offering an interactive and seamless booking experience.",
+    desc: "Premium hospitality website offering an interactive and seamless booking experience.",
     tech: ["ReactJS", "CSS Modules"],
     links: { demo: "https://hotelroyalgrandbarsana.com/", source: "#" }
   },
@@ -88,7 +90,7 @@ const PROJECTS_DATA = [
     title: "A2P Realtech",
     category: "Full Stack",
     image: "/290126125406LOGO.png",
-    desc: "A robust real estate management platform built with PHP and MySQL for high scalability and secure data handling.",
+    desc: "Robust real estate management platform for high scalability and secure data.",
     tech: ["PHP", "MySQL", "JavaScript"],
     links: { demo: "https://a2prealtech.com/", source: "#" }
   },
@@ -97,7 +99,7 @@ const PROJECTS_DATA = [
     title: "Pomp & Pepper",
     category: "Frontend",
     image: "/logo99.png",
-    desc: "A vibrant and engaging web application for Pomp & Pepper, built using ReactJS for dynamic content delivery.",
+    desc: "Vibrant and engaging web application for dynamic content delivery.",
     tech: ["ReactJS", "Redux", "Tailwind"],
     links: { demo: "https://pompnpepper.com/", source: "#" }
   },
@@ -106,7 +108,7 @@ const PROJECTS_DATA = [
     title: "Ledel Enterprises",
     category: "Full Stack",
     image: "/logo (1).png",
-    desc: "A premium LED enterprise platform showcasing high-end lighting solutions, integrated with Supabase for seamless data management.",
+    desc: "Premium LED enterprise platform integrated with Supabase for data management.",
     tech: ["React", "Supabase", "Tailwind CSS"],
     links: { demo: "https://ledel.vercel.app/", source: "#" }
   },
@@ -115,7 +117,7 @@ const PROJECTS_DATA = [
     title: "MedCare Clinic",
     category: "Demo Websites",
     image: "/clinic_logo.svg",
-    desc: "A comprehensive medical clinic portal designed for seamless appointment scheduling and patient information management.",
+    desc: "Medical clinic portal for seamless scheduling and patient management.",
     tech: ["React", "CSS Modules", "Modern UI"],
     links: { demo: "https://clindemo.vercel.app/", source: "#" }
   },
@@ -124,7 +126,7 @@ const PROJECTS_DATA = [
     title: "SavoryBite Restaurant",
     category: "Demo Websites",
     image: "/restaurant_logo.svg",
-    desc: "A sophisticated dining experience platform featuring digital menus, reservation systems, and an elegant visual layout.",
+    desc: "Dining platform featuring digital menus and elegant reservation systems.",
     tech: ["React", "Styled Components", "Animation"],
     links: { demo: "https://resdemo-mauve.vercel.app/", source: "#" }
   },
@@ -133,8 +135,8 @@ const PROJECTS_DATA = [
     title: "NeoClass Coaching",
     category: "Demo Websites",
     image: "/neoclass_coaching_logo.svg",
-    desc: "An educational hub designed for coaching centers to manage courses, student enrollment, and interactive learning resources.",
-    tech: ["React", "Context API", "Responsive Design"],
+    desc: "Educational hub for coaching centers to manage courses and interactive learning.",
+    tech: ["React", "Context API", "Responsive"],
     links: { demo: "https://classes-teal.vercel.app/", source: "#" }
   },
   {
@@ -142,11 +144,10 @@ const PROJECTS_DATA = [
     title: "GlowStyle Salon",
     category: "Demo Websites",
     image: "/salon_logo.svg",
-    desc: "A premium beauty and wellness platform for salons, offering online booking, service catalogs, and stylist profiles.",
+    desc: "Premium beauty platform for salons with online booking and stylist profiles.",
     tech: ["React", "Framer Motion", "Tailwind"],
     links: { demo: "https://demo-p6hb.vercel.app/", source: "#" }
   }
-
 ];
 
 const Projects = () => {
@@ -157,11 +158,24 @@ const Projects = () => {
     ? PROJECTS_DATA
     : PROJECTS_DATA.filter(p => p.category === filter);
 
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   return (
     <section id="projects" className="section-padding container">
-      <h2 className="section-title">
-        <span className="section-num">05 —</span> My Work
-      </h2>
+      <div className="section-header">
+        <h2 className="section-title">
+          <span className="section-num">05 —</span> Projects
+        </h2>
+        <p className="section-subtitle">Crafting digital experiences with precision and passion</p>
+      </div>
 
       <div className="filter-tabs">
         {categories.map(cat => (
@@ -171,34 +185,45 @@ const Projects = () => {
             onClick={() => setFilter(cat)}
           >
             {cat}
+            <span className="tab-dot"></span>
           </button>
         ))}
       </div>
 
       <div className="projects-grid">
-        {filteredProjects.map(proj => (
+        {filteredProjects.map((proj, idx) => (
           <a 
             key={proj.id} 
             href={proj.links.demo} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="project-card"
+            className={`project-card ${proj.featured ? 'featured' : ''}`}
+            onMouseMove={handleMouseMove}
           >
-            <div className="project-visual">
-              {proj.image ? (
-                <img src={proj.image} alt={proj.title} className="project-image" />
-              ) : (
-                <div className="project-placeholder">
-                  <span>Demo Project</span>
+            <div className="card-border-glow"></div>
+            <div className="card-content">
+              <div className="project-visual">
+                <div className="visual-overlay"></div>
+                {proj.image ? (
+                  <img src={proj.image} alt={proj.title} className="project-image" />
+                ) : (
+                  <div className="project-placeholder">
+                    <span>{proj.title.charAt(0)}</span>
+                  </div>
+                )}
+                <div className="project-hover-info">
+                  <span className="view-project">View Project →</span>
                 </div>
-              )}
-            </div>
-            <div className="project-info">
-              <span className="project-category">{proj.category}</span>
-              <h3>{proj.title}</h3>
-              <p>{proj.desc}</p>
-              <div className="project-tech-stack">
-                {proj.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
+              </div>
+              <div className="project-info">
+                <div className="info-top">
+                  <span className="project-category">{proj.category}</span>
+                </div>
+                <h3>{proj.title}</h3>
+                <p>{proj.desc}</p>
+                <div className="project-tech-labels">
+                  {proj.tech.map(t => <span key={t} className="tech-tag">{t}</span>)}
+                </div>
               </div>
             </div>
           </a>
@@ -209,3 +234,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
