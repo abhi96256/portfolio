@@ -115,7 +115,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-padding container">
       <h2 className="section-title">
-        <span className="section-num">04 —</span> My Work
+        <span className="section-num">05 —</span> My Work
       </h2>
 
       <div className="filter-tabs">

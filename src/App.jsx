@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Experience from './components/Experience/Experience';
+import Services from './components/Services/Services';
 import Process from './components/Process/Process';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
@@ -34,6 +35,7 @@ function App() {
         <section id="home" className="reveal"><Hero /></section>
         <div id="about" className="reveal"><About /></div>
         <div id="experience" className="reveal"><Experience /></div>
+        <div id="services" className="reveal"><Services /></div>
         <div id="process" className="reveal"><Process /></div>
         <div id="projects" className="reveal"><Projects /></div>
         <div id="skills" className="reveal"><Skills /></div>

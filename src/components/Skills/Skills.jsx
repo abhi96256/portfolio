@@ -49,7 +49,7 @@ const Skills = () => {
   return (
     <section id="skills" className="section-padding container">
       <h2 className="section-title">
-        <span className="section-num">05 —</span> Technical Expertise
+        <span className="section-num">06 —</span> Technical Expertise
       </h2>
       <div className="skills-grid-layout">
         {SKILLS_DATA.map(cat => (

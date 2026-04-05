@@ -28,7 +28,7 @@ const Process = () => {
   return (
     <section id="process" className="process section-padding container">
       <h2 className="section-title">
-        <span className="section-num">03 —</span> My Workflow
+        <span className="section-num">04 —</span> My Workflow
       </h2>
       <div className="process-grid">
         {STEPS.map(step => (
