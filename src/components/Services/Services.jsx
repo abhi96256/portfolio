@@ -5,7 +5,7 @@ import './Services.css';
 const Services = () => {
   const cardsRef = useRef([]);
   const vantaRef = useRef(null);
-  const [vantaEffect, setVantaEffect] = React.useState(null);
+  const vantaEffect = useRef(null);
 
   const services = [
     {
@@ -60,7 +60,7 @@ const Services = () => {
   ];
 
   useEffect(() => {
-    // Staggered entry animation
+    // GSAP Animation
     gsap.fromTo(".service-card-v2", 
       { opacity: 0, y: 50 }, 
       { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power3.out", scrollTrigger: {
@@ -70,9 +70,11 @@ const Services = () => {
       }
     );
 
+    const isMobile = window.innerWidth < 768;
+
     // Vanta.js initialization
-    if (!vantaEffect && window.VANTA) {
-      setVantaEffect(window.VANTA.BIRDS({
+    if (!vantaEffect.current && window.VANTA) {
+      vantaEffect.current = window.VANTA.BIRDS({
         el: vantaRef.current,
         mouseControls: true,
         touchControls: true,
@@ -82,22 +84,36 @@ const Services = () => {
         scale: 1.00,
         scaleMobile: 1.00,
         backgroundColor: 0x050505,
-        color1: 0xffffff,
-        color2: 0xc9a84c,
-        birdSize: 1.8,
-        wingSpan: 30.00,
+        color1: 0xffd700,
+        color2: 0xC9A84C,
+        birdSize: isMobile ? 0.8 : 1.8,
+        wingSpan: isMobile ? 15.00 : 30.00,
         speedLimit: 4.00,
-        separation: 40.00,
+        separation: isMobile ? 25.00 : 40.00,
         alignment: 40.00,
         cohesion: 40.00,
-        quantity: 4.00
-      }));
+        quantity: isMobile ? 2.00 : 4.00
+      });
     }
 
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
+    const handleResize = () => {
+      if (vantaEffect.current) {
+        const mobile = window.innerWidth < 768;
+        vantaEffect.current.setOptions({
+          birdSize: mobile ? 0.8 : 1.8,
+          quantity: mobile ? 2.00 : 4.00,
+          separation: mobile ? 25.00 : 40.00,
+        });
+      }
     };
-  }, [vantaEffect]);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      if (vantaEffect.current) vantaEffect.current.destroy();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <section className="services-section container" id="services" ref={vantaRef}>

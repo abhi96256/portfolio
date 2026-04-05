@@ -100,13 +100,58 @@ const PROJECTS_DATA = [
     desc: "A vibrant and engaging web application for Pomp & Pepper, built using ReactJS for dynamic content delivery.",
     tech: ["ReactJS", "Redux", "Tailwind"],
     links: { demo: "https://pompnpepper.com/", source: "#" }
+  },
+  {
+    id: 12,
+    title: "Ledel Enterprises",
+    category: "Full Stack",
+    image: "/logo (1).png",
+    desc: "A premium LED enterprise platform showcasing high-end lighting solutions, integrated with Supabase for seamless data management.",
+    tech: ["React", "Supabase", "Tailwind CSS"],
+    links: { demo: "https://ledel.vercel.app/", source: "#" }
+  },
+  {
+    id: 13,
+    title: "MedCare Clinic",
+    category: "Demo Websites",
+    image: "/clinic_logo.svg",
+    desc: "A comprehensive medical clinic portal designed for seamless appointment scheduling and patient information management.",
+    tech: ["React", "CSS Modules", "Modern UI"],
+    links: { demo: "https://clindemo.vercel.app/", source: "#" }
+  },
+  {
+    id: 14,
+    title: "SavoryBite Restaurant",
+    category: "Demo Websites",
+    image: "/restaurant_logo.svg",
+    desc: "A sophisticated dining experience platform featuring digital menus, reservation systems, and an elegant visual layout.",
+    tech: ["React", "Styled Components", "Animation"],
+    links: { demo: "https://resdemo-mauve.vercel.app/", source: "#" }
+  },
+  {
+    id: 15,
+    title: "NeoClass Coaching",
+    category: "Demo Websites",
+    image: "/neoclass_coaching_logo.svg",
+    desc: "An educational hub designed for coaching centers to manage courses, student enrollment, and interactive learning resources.",
+    tech: ["React", "Context API", "Responsive Design"],
+    links: { demo: "https://classes-teal.vercel.app/", source: "#" }
+  },
+  {
+    id: 16,
+    title: "GlowStyle Salon",
+    category: "Demo Websites",
+    image: "/salon_logo.svg",
+    desc: "A premium beauty and wellness platform for salons, offering online booking, service catalogs, and stylist profiles.",
+    tech: ["React", "Framer Motion", "Tailwind"],
+    links: { demo: "https://demo-p6hb.vercel.app/", source: "#" }
   }
 
 ];
 
 const Projects = () => {
   const [filter, setFilter] = useState('All');
-  const categories = ['All', 'Full Stack', 'Frontend', 'Mobile'];
+  const categories = ['All', 'Full Stack', 'Frontend', 'Demo Websites'];
 
   const filteredProjects = filter === 'All'
     ? PROJECTS_DATA
@@ -140,7 +185,13 @@ const Projects = () => {
             className="project-card"
           >
             <div className="project-visual">
-              {proj.image && <img src={proj.image} alt={proj.title} className="project-image" />}
+              {proj.image ? (
+                <img src={proj.image} alt={proj.title} className="project-image" />
+              ) : (
+                <div className="project-placeholder">
+                  <span>Demo Project</span>
+                </div>
+              )}
             </div>
             <div className="project-info">
               <span className="project-category">{proj.category}</span>
