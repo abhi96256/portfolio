@@ -32,6 +32,47 @@ const productCards = [
 /* ─── Roles for typewriter ──────────────────────────── */
 const roles = ['Full Stack Developer', 'Product Builder', 'UI/UX Enthusiast', 'Problem Solver'];
 
+import Hyperspeed from './Hyperspeed';
+
+/* ── Hyperspeed Effect Options ── */
+const hyperspeedOptions = {
+  onSpeedUp: () => { },
+  onSlowDown: () => { },
+  distortion: 'turbulentDistortion',
+  length: 400,
+  roadWidth: 10,
+  islandWidth: 2,
+  lanesPerRoad: 4,
+  fov: 90,
+  fovSpeedUp: 150,
+  speedUp: 2,
+  carLightsFade: 0.4,
+  totalSideLightSticks: 20,
+  lightPairsPerRoadWay: 40,
+  shoulderLinesWidthPercentage: 0.05,
+  brokenLinesWidthPercentage: 0.1,
+  brokenLinesLengthPercentage: 0.5,
+  lightStickWidth: [0.12, 0.5],
+  lightStickHeight: [1.3, 1.7],
+  movingAwaySpeed: [60, 80],
+  movingCloserSpeed: [-120, -160],
+  carLightsLength: [400 * 0.03, 400 * 0.2],
+  carLightsRadius: [0.05, 0.14],
+  carWidthPercentage: [0.3, 0.5],
+  carShiftX: [-0.8, 0.8],
+  carFloorSeparation: [0, 5],
+  colors: {
+    roadColor: 0x080808,
+    islandColor: 0x0a0a0a,
+    background: 0x000000,
+    shoulderLines: 0xFFFFFF,
+    brokenLines: 0xFFFFFF,
+    leftCars: [0xf5e09a, 0xc9a84c, 0xffffff],
+    rightCars: [0xa07830, 0xc9a84c, 0xf5e09a],
+    sticks: 0xc9a84c,
+  }
+};
+
 export default function Hero() {
   const [roleIndex, setRoleIndex]   = useState(0);
   const [displayText, setDisplayText] = useState('');
@@ -41,8 +82,8 @@ export default function Hero() {
   const heroRef   = useRef(null);
   const nameRef   = useRef(null);
   const leftRef   = useRef(null);
-  const rightRef  = useRef(null);
   const spotRef   = useRef(null);
+
 
   /* ── GSAP entrance timeline ── */
   useEffect(() => {
@@ -54,11 +95,7 @@ export default function Hero() {
 
       // Hub & right stage animates first on mobile (it's order:1 at top)
       if (isMobile) {
-        tl.fromTo('.hub-wrap', { opacity: 0, scale: 0 },
-            { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(2)' })
-          .fromTo('.float-card', { opacity: 0, y: 30, scale: 0.9 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1 }, '-=0.4')
-          .fromTo('.hero-pill', { opacity: 0, y: -16 },
+        tl.fromTo('.hero-pill', { opacity: 0, y: -16 },
             { opacity: 1, y: 0, duration: 0.6 }, '-=0.2')
           .fromTo('.hero-greeting', { opacity: 0, y: 12 },
             { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
@@ -82,14 +119,7 @@ export default function Hero() {
           .fromTo('.hero-tagline', { opacity: 0, y: 20 },            { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
           .fromTo('.journey-row',  { opacity: 0, y: 20 },            { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
           .fromTo('.cta-row',      { opacity: 0, y: 20 },            { opacity: 1, y: 0, duration: 0.6 }, '-=0.2')
-          .fromTo('.tech-row',     { opacity: 0, y: 20 },            { opacity: 1, y: 0, duration: 0.5 }, '-=0.2')
-          .fromTo('.float-card',   { opacity: 0, x: isTablet ? 30 : 60, scale: 0.85 },
-            { opacity: 1, x: 0, scale: 1, duration: 0.7, stagger: 0.12 }, '-=0.6')
-          .fromTo('.hub-wrap',     { opacity: 0, scale: 0 },
-            { opacity: 1, scale: 1, duration: 0.9, ease: 'back.out(2)' }, '-=0.9')
-          .fromTo('.code-snap',    { opacity: 0, y: 40 },            { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
-          .fromTo('.stat-badge',   { opacity: 0, scale: 0 },
-            { opacity: 1, scale: 1, duration: 0.5, stagger: 0.12, ease: 'back.out(1.8)' }, '-=0.4');
+          .fromTo('.tech-row',     { opacity: 0, y: 20 },            { opacity: 1, y: 0, duration: 0.5 }, '-=0.2');
       }
     }, heroRef);
     return () => ctx.revert();
@@ -111,9 +141,6 @@ export default function Hero() {
       if (spotRef.current) {
         spotRef.current.style.background =
           `radial-gradient(600px circle at ${x}px ${y}px, rgba(201,168,76,0.07), transparent 60%)`;
-      }
-      if (rightRef.current) {
-        gsap.to(rightRef.current, { rotateY: nx * 8, rotateX: -ny * 6, duration: 0.6, ease: 'power2.out' });
       }
       if (nameRef.current) {
         gsap.to(nameRef.current, { x: nx * 12, y: ny * 6, duration: 0.8, ease: 'power2.out' });
@@ -145,22 +172,13 @@ export default function Hero() {
 
   return (
     <header className="hero-v3" ref={heroRef} id="home">
+      <Hyperspeed effectOptions={hyperspeedOptions} />
 
       {/* ── spotlight layer ── */}
       <div className="spotlight-layer" ref={spotRef} />
 
       {/* ── ambient blobs ── */}
       <div className="blob b1" /><div className="blob b2" /><div className="blob b3" />
-
-      {/* ── grid ── */}
-      <div className="dot-grid" />
-
-      {/* ── particles ── */}
-      <div className="particles-wrap" aria-hidden="true">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <span key={i} className="pt" style={{ '--i': i }} />
-        ))}
-      </div>
 
       <div className="hero-v3-inner">
 
@@ -225,80 +243,6 @@ export default function Hero() {
           </div>
 
 
-        </div>
-
-        {/* ════ RIGHT — 3D Stage ════ */}
-        <div className="hero-right" ref={rightRef} style={{ perspective: '1200px' }}>
-
-          {/* Central Hub */}
-          <div className="hub-wrap">
-            <div className="hub-core">
-              <FiZap className="hub-icon" />
-            </div>
-            <div className="hub-ring rg1" /><div className="hub-ring rg2" /><div className="hub-ring rg3" />
-            {[0,1,2,3,4,5].map(i => <span key={i} className="orb-dot" style={{ '--oi': i }} />)}
-          </div>
-
-          {/* Floating Product Cards */}
-          {productCards.map(({ Icon, title, sub, color }, idx) => (
-            <div
-              key={title}
-              className="float-card"
-              style={{ '--cc': color, '--fi': idx }}
-            >
-              <div className="fc-icon-wrap" style={{ background: `${color}18`, border: `1px solid ${color}40` }}>
-                <Icon size={18} color={color} />
-              </div>
-              <div className="fc-info">
-                <span className="fc-title">{title}</span>
-                <span className="fc-sub">{sub}</span>
-              </div>
-              <span className="fc-live" style={{ background: color, boxShadow: `0 0 8px ${color}` }} />
-            </div>
-          ))}
-
-          {/* Code Snapshot */}
-          <div className="code-snap">
-            <div className="cs-bar">
-              <span className="csb r"/><span className="csb y"/><span className="csb g"/>
-              <span className="cs-name">product.js</span>
-            </div>
-            <div className="cs-body">
-              <div><span className="ck">const</span> idea <span className="co">=</span> <span className="cs">"yours"</span>;</div>
-              <div><span className="ck">const</span> code <span className="co">=</span> <span className="cs">"mine"</span>;</div>
-              <div className="cs-spacer"/>
-              <div><span className="ck">return</span> <span className="cf">build</span>(idea, code);</div>
-              <div className="cc">{'// → 🚀 Shipped!'}</div>
-            </div>
-          </div>
-
-
-
-
-          {/* Tech icons orbiting right side */}
-          <div className="right-tech-orbit">
-            {techIcons.slice(0, 5).map(({ Icon, label, color }, i) => (
-              <div key={label} className="rto-item" style={{ '--rti': i, '--rtc': color }}>
-                <Icon size={20} color={color} />
-              </div>
-            ))}
-          </div>
-
-          {/* Animated SVG lines */}
-          <svg className="stage-lines" viewBox="0 0 500 580" fill="none">
-            <path d="M250 290 Q 340 180 390 90"  stroke="rgba(201,168,76,0.12)" strokeWidth="1.5" strokeDasharray="5 5">
-              <animate attributeName="stroke-dashoffset" from="0" to="-50" dur="3s" repeatCount="indefinite"/>
-            </path>
-            <path d="M250 290 Q 380 310 420 360" stroke="rgba(129,140,248,0.12)" strokeWidth="1.5" strokeDasharray="5 5">
-              <animate attributeName="stroke-dashoffset" from="0" to="-50" dur="4s" repeatCount="indefinite"/>
-            </path>
-            <path d="M250 290 Q 320 400 310 480" stroke="rgba(52,211,153,0.12)" strokeWidth="1.5" strokeDasharray="5 5">
-              <animate attributeName="stroke-dashoffset" from="0" to="-50" dur="3.5s" repeatCount="indefinite"/>
-            </path>
-            <path d="M250 290 Q 140 200 100 120"stroke="rgba(244,114,182,0.12)" strokeWidth="1.5" strokeDasharray="5 5">
-              <animate attributeName="stroke-dashoffset" from="0" to="-50" dur="5s" repeatCount="indefinite"/>
-            </path>
-          </svg>
         </div>
       </div>
 
